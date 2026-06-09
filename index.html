@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cannes Lions 2026 — April Buschur's Executive Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B3E;--navy2:#1A2E5C;
+  --gold:#C8963E;--gold-lt:#F5E6C8;
+  --cream:#F8F5EF;--white:#FFFFFF;
+  --text:#1A1A2E;--text2:#5C607A;
+  --border:#E2D9CB;
+  --rltr:#D0021B;--rltr-bg:#FFF2F3;
+  --bnav-h:58px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--cream);color:var(--text);
+  font-size:15px;line-height:1.45;
+  /* space for bottom nav on mobile */
+  padding-bottom:calc(var(--bnav-h) + env(safe-area-inset-bottom,0px));
+}
+
+/* ── HERO ─────────────────────────────────── */
+.hero{
+  background:var(--navy);color:#fff;
+  padding:14px 18px 12px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 65% 0%,rgba(200,150,62,.2) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px}
+.hero-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,5vw,36px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.hero-sub{font-size:12px;color:#A8B4CC;margin-top:4px}
+.hero-stats{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.hero-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:3px 10px;font-size:10px;color:#D4DDE8}
+.hero-stat.rltr{background:rgba(208,2,27,.25);border-color:rgba(208,2,27,.45);color:#FFB0B0}
+
+/* ── ALWAYS-ON (collapsible) ──────────────── */
+.ao-toggle{
+  background:var(--navy2);color:#6A80A8;
+  width:100%;border:none;cursor:pointer;
+  padding:8px 16px;
+  display:flex;align-items:center;gap:8px;
+  font-family:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.ao-toggle .ao-label{
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:600;color:#6A80A8;
+}
+.ao-toggle .ao-preview{
+  font-size:11px;color:var(--gold);flex:1;
+  text-align:left;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ao-toggle .ao-chev{
+  color:var(--gold);font-size:12px;
+  transition:transform .2s;flex-shrink:0;
+}
+.ao-toggle.open .ao-chev{transform:rotate(180deg)}
+.ao-body{
+  background:var(--navy2);
+  display:none;padding:2px 14px 10px;
+  flex-wrap:wrap;gap:6px;
+}
+.ao-body.open{display:flex}
+.ao-item{
+  background:rgba(200,150,62,.15);border:1px solid rgba(200,150,62,.3);
+  border-radius:14px;padding:4px 11px;font-size:11px;color:var(--gold);
+}
+
+/* ── STICKY CONTROLS ─────────────────────── */
+.controls{
+  position:sticky;top:0;z-index:100;
+  background:var(--white);
+  border-bottom:1.5px solid var(--border);
+  box-shadow:0 2px 14px rgba(0,0,0,.07);
+}
+
+/* Day tabs — hidden on mobile, visible on desktop */
+.ctrl-days{
+  display:none;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  border-bottom:1px solid var(--border);
+  padding:0 12px;
+}
+.ctrl-days::-webkit-scrollbar{display:none}
+.day-btn{
+  flex:none;
+  padding:11px 18px;min-height:44px;
+  font-size:13px;font-weight:600;
+  color:var(--text2);background:none;border:none;cursor:pointer;
+  border-bottom:2.5px solid transparent;margin-bottom:-1.5px;
+  transition:all .15s;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.day-btn:hover{color:var(--text)}
+.day-btn.active{color:var(--navy);border-bottom-color:var(--gold)}
+
+/* Search row */
+.ctrl-search{padding:10px 12px 7px}
+.search-wrap{position:relative;width:100%}
+.search-wrap svg{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;stroke:var(--text2);fill:none;stroke-width:2;
+  pointer-events:none;
+}
+#search{
+  width:100%;height:44px;
+  padding:0 12px 0 36px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-size:16px; /* 16px prevents iOS auto-zoom */
+  font-family:inherit;
+  background:#FAFAF8;outline:none;
+  -webkit-appearance:none;appearance:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+#search:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(200,150,62,.12)}
+
+/* Filter pills — single scrollable row */
+.ctrl-filters{
+  display:flex;align-items:center;gap:7px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:6px 12px 10px;
+}
+.ctrl-filters::-webkit-scrollbar{display:none}
+
+.filt-btn{
+  flex:none;min-height:36px;padding:0 14px;
+  border:1.5px solid var(--border);border-radius:20px;
+  font-size:12px;font-weight:500;color:var(--text2);
+  background:#fff;cursor:pointer;transition:all .15s;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.filt-btn:hover{border-color:var(--navy);color:var(--navy)}
+.filt-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+
+.filter-divider{flex:none;width:1px;height:20px;background:var(--border);margin:0 1px}
+
+.rltr-btn{
+  flex:none;min-height:36px;padding:0 14px;
+  border:1.5px solid rgba(208,2,27,.35);border-radius:20px;
+  font-size:12px;font-weight:600;color:var(--rltr);
+  background:#fff;cursor:pointer;transition:all .15s;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.rltr-btn.active{background:var(--rltr);border-color:var(--rltr);color:#fff}
+
+.venue-select{
+  flex:none;min-height:36px;padding:0 28px 0 10px;
+  border:1.5px solid var(--border);border-radius:8px;
+  font-size:12px;font-family:inherit;
+  background:#fff color:var(--text);cursor:pointer;outline:none;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235C607A'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+  background-color:#fff;
+}
+.venue-select:focus{border-color:var(--gold)}
+
+/* ── RESULTS BAR ─────────────────────────── */
+.results-bar{
+  padding:7px 14px;font-size:12px;color:var(--text2);
+  display:flex;align-items:center;gap:6px;
+  border-bottom:1px solid var(--border);background:var(--white);
+}
+.results-count{font-weight:700;color:var(--text);font-size:13px}
+
+/* ── EVENT LIST ──────────────────────────── */
+#eventList{padding-bottom:16px}
+
+.day-divider{
+  background:var(--navy);color:var(--gold);
+  padding:10px 16px;font-size:13px;font-weight:700;letter-spacing:.04em;
+  display:flex;align-items:center;gap:8px;
+}
+.day-divider .day-count{color:rgba(255,255,255,.45);font-weight:400;font-size:11px;margin-left:auto}
+
+.period-head{
+  padding:8px 14px 5px;
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text2);background:var(--cream);border-bottom:1px solid var(--border);
+}
+
+/* Event row — mobile first (single column) */
+.evt{
+  padding:13px 14px;
+  border-bottom:1px solid var(--border);
+  background:var(--white);
+  -webkit-tap-highlight-color:transparent;
+}
+.evt:active{background:#F6F4EF}
+.evt.is-realtor{background:var(--rltr-bg);border-left:3px solid var(--rltr)}
+.evt.is-realtor:active{background:#FFE6E8}
+
+/* time + venue on one line */
+.evt-meta{
+  display:flex;align-items:center;gap:8px;
+  flex-wrap:wrap;margin-bottom:6px;
+}
+.evt-time{font-size:12px;font-weight:700;color:var(--text2);white-space:nowrap}
+.venue-tag{
+  display:inline-flex;align-items:center;
+  padding:2px 8px;border-radius:12px;
+  font-size:10px;font-weight:600;color:#fff;
+  white-space:nowrap;letter-spacing:.02em;
+}
+.evt-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:4px}
+.evt-speakers{font-size:12px;color:var(--text2);line-height:1.45}
+.evt-flags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.flag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.03em}
+.flag-rltr{background:var(--rltr);color:#fff}
+.flag-invite{background:#EEF2FF;color:#3A5A9E;border:1px solid #C0CCEC}
+.flag-requested{background:#FFF8ED;color:#9B6A00;border:1px solid #EED090}
+
+/* ── EMPTY STATE ────────────────────────── */
+.empty-state{text-align:center;padding:60px 20px;color:var(--text2)}
+.empty-state .icon{font-size:36px;margin-bottom:12px}
+.empty-state h3{font-size:16px;margin-bottom:6px;color:var(--text)}
+
+/* ── FOOTER ─────────────────────────────── */
+.footer{background:var(--navy);color:#6A80A8;text-align:center;padding:16px;font-size:11px}
+
+/* ── BOTTOM NAV (mobile) ─────────────────── */
+.bottom-nav{
+  display:flex;
+  position:fixed;bottom:0;left:0;right:0;
+  z-index:200;
+  background:var(--navy);
+  border-top:1px solid rgba(200,150,62,.28);
+  box-shadow:0 -3px 18px rgba(0,0,0,.28);
+  padding-bottom:env(safe-area-inset-bottom,0);
+}
+.bnav-btn{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8px 2px 8px;min-height:var(--bnav-h);
+  border:none;background:none;
+  color:rgba(168,180,210,.65);
+  cursor:pointer;font-family:inherit;
+  -webkit-tap-highlight-color:transparent;
+  transition:color .12s;
+}
+.bnav-day{font-size:13px;font-weight:700;line-height:1.2;margin-bottom:1px}
+.bnav-date{font-size:9px;opacity:.7}
+.bnav-btn.active{color:var(--gold)}
+.bnav-btn.active .bnav-day{color:var(--gold)}
+
+/* ── DESKTOP OVERRIDES ───────────────────── */
+@media(min-width:640px){
+  body{padding-bottom:0}
+  .bottom-nav{display:none}
+  .ctrl-days{display:flex}
+  .hero{padding:26px 20px 20px}
+  .hero-title{font-size:clamp(24px,4vw,36px)}
+  .hero-sub{margin-top:6px;font-size:13px}
+  .hero-stats{margin-top:12px}
+  .ctrl-search{padding:10px 14px 7px}
+  #search{font-size:14px}
+}
+
+@media(min-width:900px){
+  /* 3-column event layout on wide screens */
+  .evt{
+    display:grid;
+    grid-template-columns:155px 1fr auto;
+    grid-template-rows:auto auto;
+    column-gap:16px;
+    align-items:start;
+    padding:12px 20px;
+  }
+  .evt-meta{grid-column:1;grid-row:1/3;flex-direction:column;align-items:flex-start;gap:5px;margin-bottom:0}
+  .evt-title{grid-column:2;grid-row:1;font-size:13.5px;margin-bottom:0}
+  .evt-speakers{grid-column:2;grid-row:2;padding-top:3px}
+  .evt-flags{grid-column:3;grid-row:1/3;flex-direction:column;align-items:flex-end;margin-top:0;min-width:90px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Cannes, France · June 22–25, 2026</div>
+  <div class="hero-title">Cannes Lions 2026<br>Executive Schedule</div>
+  <div class="hero-sub">Curated for April Buschur · realtor.com</div>
+  <div class="hero-stats">
+    <span class="hero-stat">285 Sessions</span>
+    <span class="hero-stat">4 Days</span>
+    <span class="hero-stat">11 Venues</span>
+    <span class="hero-stat rltr">🏠 2 Realtor.com Sessions</span>
+  </div>
+</div>
+
+<button class="ao-toggle" id="aoToggle" aria-expanded="false">
+  <span class="ao-label">📍 Drop-In Spaces</span>
+  <span class="ao-preview">Havas Cafe · Canva Cabana · AdExchanger Yacht · Basis Oasis</span>
+  <span class="ao-chev">▾</span>
+</button>
+<div class="ao-body" id="aoBody">
+  <span class="ao-item">Havas Cafe · 45 Bd de la Croisette</span>
+  <span class="ao-item">Canva Creative Cabana · Vega La Plage</span>
+  <span class="ao-item">AdExchanger Yacht · Jetée Albert Edouard</span>
+  <span class="ao-item">Basis Oasis · 42 Bd de la Croisette, Floor 5</span>
+</div>
+
+<div class="controls">
+  <!-- Day tabs: visible on desktop, replaced by bottom nav on mobile -->
+  <div class="ctrl-days">
+    <button class="day-btn active" data-day="All">All Days</button>
+    <button class="day-btn" data-day="Mon">Mon · Jun 22</button>
+    <button class="day-btn" data-day="Tue">Tue · Jun 23</button>
+    <button class="day-btn" data-day="Wed">Wed · Jun 24</button>
+    <button class="day-btn" data-day="Thu">Thu · Jun 25</button>
+  </div>
+  <!-- Search -->
+  <div class="ctrl-search">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="search" placeholder="Search events, speakers, companies…" autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+  </div>
+  <!-- Filter pills -->
+  <div class="ctrl-filters">
+    <button class="filt-btn active" data-period="All">All Times</button>
+    <button class="filt-btn" data-period="Morning">🌅 Morning</button>
+    <button class="filt-btn" data-period="Afternoon">☀️ Afternoon</button>
+    <button class="filt-btn" data-period="Evening">🌆 Evening</button>
+    <div class="filter-divider"></div>
+    <select class="venue-select" id="venueFilter"><option value="All">All Venues</option></select>
+    <div class="filter-divider"></div>
+    <button class="rltr-btn" id="rltrBtn">🏠 Realtor.com</button>
+  </div>
+</div>
+
+<div class="results-bar">
+  <span id="resultCount" class="results-count">285</span>&nbsp;<span>sessions shown</span>
+</div>
+
+<div id="eventList"></div>
+
+<div class="footer">
+  Built for April Buschur · realtor.com &nbsp;·&nbsp; Cannes Lions 2026
+</div>
+
+<!-- Bottom tab navigation (mobile only) -->
+<nav class="bottom-nav" aria-label="Day navigation">
+  <button class="bnav-btn active" data-day="All"><span class="bnav-day">All</span><span class="bnav-date">Days</span></button>
+  <button class="bnav-btn" data-day="Mon"><span class="bnav-day">Mon</span><span class="bnav-date">Jun 22</span></button>
+  <button class="bnav-btn" data-day="Tue"><span class="bnav-day">Tue</span><span class="bnav-date">Jun 23</span></button>
+  <button class="bnav-btn" data-day="Wed"><span class="bnav-day">Wed</span><span class="bnav-date">Jun 24</span></button>
+  <button class="bnav-btn" data-day="Thu"><span class="bnav-day">Thu</span><span class="bnav-date">Jun 25</span></button>
+</nav>
+
+<script>
+// ── VENUE COLORS ──────────────────────────────────────────────────────────────
+const VCOL = {
+  'Sport Beach':       '#0077B6',
+  'Adweek House':      '#B83232',
+  'Brand Innovators':  '#0D7A5F',
+  'Female Quotient':   '#7B2D8B',
+  'WSJ Journal House': '#2C3E50',
+  'Ad Age':            '#9B7A00',
+  'Walmart Connect':   '#0071CE',
+  '3C Ventures':       '#7D5A30',
+  'Roundel House':     '#BB0000',
+  'Equativ Yacht':     '#0E8A8A',
+  'Adweek Off-site':   '#C45E10',
+};
+function vcol(v){ return VCOL[v]||'#555' }
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function parseTime(t){
+  if(!t||t==='Evening') return 1140;
+  const m=t.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if(!m) return 9999;
+  let h=+m[1],mn=+m[2];
+  if(m[3].toUpperCase()==='PM'&&h!==12) h+=12;
+  if(m[3].toUpperCase()==='AM'&&h===12) h=0;
+  return h*60+mn;
+}
+function period(s){ return s<720?'Morning':s<1020?'Afternoon':'Evening' }
+
+// ── EVENTS DATA ───────────────────────────────────────────────────────────────
+// Format: [day, time, venue, title, speakers, flags]
+// flags: 'r'=realtor.com  'i'=invite-only  'q'=invite-requested
+const RAW=[
+// ── MONDAY JUNE 22 ──
+['Mon','7:00 AM','Sport Beach','Sweatwork Morning Workouts','Angela Manuel Davis · Vesi Angelova · Ron "Boss" Everline',''],
+['Mon','8:00 AM','Sport Beach','Executive Roundtable: Flipping the Playbook for Modern Communications','Hosted by Allison Worldwide',''],
+['Mon','8:00 AM','3C Ventures','Le Bistro Opens (Lucia Beach)','Walk-ins welcome',''],
+['Mon','8:15 AM','Adweek House','Meet the Editors: An Adweek Subscriber Breakfast','Adweek Editorial Team',''],
+['Mon','8:30 AM','Brand Innovators','Breakfast & Registration','',''],
+['Mon','9:00 AM','Ad Age','The List Lounge Opens (57 Bd de la Croisette)','',''],
+['Mon','9:00 AM','Walmart Connect','Studio Activation Opens (Hôtel Barrière Le Majestic)','Runs until 3:00 PM',''],
+['Mon','9:00 AM','Sport Beach','Breakfast Hosted by Indeed: Coaches Corner — A High Performance Workshop','',''],
+['Mon','9:15 AM','Brand Innovators','Opening Remarks','Brandon Gutman · Marc Sternberg (Co-CEOs) · Gisela Germano · Pearl Tam',''],
+['Mon','9:15 AM','WSJ Journal House','Guest Arrivals & Sanctuary Networking (61 Bd de la Croisette)','',''],
+['Mon','9:20 AM','Adweek House','Fashion Forward: Redefining Beauty, Media, and Business','Ashley Graham (Model & Entrepreneur) · Marisa Thalberg (EVP CMO, JCPenney)',''],
+['Mon','9:30 AM','Female Quotient','Creative Currency: From Insight to Impact','Maggie Milnamow (Betches Media) · Carley Caldas (eos Products) · Gina Cavallo (xpln.ai) · Kim Faver (NBCUniversal) · Cyntia Leo (Urban Outfitters)',''],
+['Mon','9:30 AM','Brand Innovators','The CMO Agenda: Navigating Growth, Innovation & Change','Adrian Fung (eBay) · Joy Howard (Back Market) · Zoë Lazarre (Genentech) · Sydne Mullings (Microsoft) · Andrea Zaretsky (Morgan Stanley) · Mod: Scott Braley (iSpot)',''],
+['Mon','9:45 AM','WSJ Journal House','A Conversation with Mercedes-Benz & Dollar General','Melody Lee (CMO, Mercedes-Benz USA) · Tony Rogers (SVP CMO, Dollar General) · Mod: Suzanne Vranica (WSJ)',''],
+['Mon','10:00 AM','Female Quotient','The Loyalty Shift: What Keeps Shoppers Coming Back','Elizabeth Buchanan (Rokt) · Michelle Mesenburg (Chief Brand Officer, Target) · Mod: Shelley Zalis (FQ CEO)',''],
+['Mon','10:00 AM','Adweek House','Frequency Is Not Impact: Measuring What Actually Matters (Viant)','Holly Dunn · Khara Hutchinson (CVS) · Anna Johnson · Yan Liu (CEO, Viant) · Bennett Richardson (CMO, Viant) · Mod: Will Lee (CEO, Adweek)',''],
+['Mon','10:05 AM','Brand Innovators','Beyond the Click: How Agentic AI Is Rewriting Marketing Effectiveness','LaShonda Anderson-Williams (Salesforce) · Mod: Uwem Ukpong (AWS)',''],
+['Mon','10:30 AM','Female Quotient','Built on Trust: Designing Tech for Real Life','Frances Callaghan (Roku) · Dr. Shruti Jayakumar (Deloitte) · Jenna Kozel King (Databricks) · Jessica Shapiro (CMO, LiveRamp)',''],
+['Mon','10:30 AM','Brand Innovators','Fireside Chat: Eli Lilly','Lina Polimeni (SVP CMO, Eli Lilly) · Mod: Daniella Harkins (LiveRamp)',''],
+['Mon','10:30 AM','Brand Innovators','Women in Leadership: Rewriting the C-Suite Rules','Sharon Peters (CMO, Spectrum) · Vanessa Wallace (CMO, GLD) · Jessica Williams (CMO, OnePay) · Mimi Swain (CMO, Amazon Devices)',''],
+['Mon','10:45 AM','WSJ Journal House','Your Brand, Your Team, Your Agents: Leading with AI','WSJ Custom Events',''],
+['Mon','10:50 AM','Adweek House','In Conversation with Tatari','',''],
+['Mon','11:00 AM','Female Quotient','Hyperpersonalization at Scale: AI Across Industries','Ruba Borno (AWS) · Zoë Harris Lazarre (Genentech) · Mod: Shelley Zalis (FQ CEO)',''],
+['Mon','11:00 AM','Sport Beach','First Touch to Final Whistle: Global Brands Meet America\'s World Cup','Ben James (GALE) · Rick Pineda (Diageo) · Cristian Racioppi (Channel Factory)',''],
+['Mon','11:00 AM','Brand Innovators','Fireside Chat: Marriott International','Peggy Roe (EVP Chief Customer Officer, Marriott) · Mod: Sam Bakhshandehpour (Bilt)',''],
+['Mon','11:00 AM','Brand Innovators','Brand Worlds are the Next Marketing Frontier','Joy Ogunneye (Kenvue) · Mod: Chad Reynolds (Vurvey CEO)',''],
+['Mon','11:15 AM','Adweek House','The Human Edge of Marketing (Treasure AI Roundtable)','Mickey Neuberger (realtor.com) · Rafa Flores (Treasure AI) · Tristan Pineiro (Treasure AI) · Jennie Platt (TD Bank) · Roberto Stanichi (Mattel) · Mod: Jenny Rooney (Adweek)','r'],
+['Mon','11:30 AM','Female Quotient','Connected Commerce: Buy the Feeling','Nyma Quidwai (VIZIO) · Jess Shuraleff (Uber Advertising) · Mod: Danielle Betras (NYT Wirecutter)',''],
+['Mon','11:30 AM','Sport Beach','Executive Roundtable: The Premium Placement You\'re Not Using (The Trade Desk)','Elle Duncan (Lead Sports Host, Netflix)',''],
+['Mon','11:30 AM','Brand Innovators','Performance Marketing\'s Missing Variable: Rethinking Creative + Optimization','Beverly Jackson (VP, Zillow Group) · Melody Lee (CMO, Mercedes-Benz) · Victoria Sjardin (Mars) · Mod: Nicole Guess (Perion CRO)',''],
+['Mon','11:30 AM','Brand Innovators','Retail Media Networks: The Third Wave of Digital Advertising','Stephanie Paturzo (Instacart) · Monique Perlmutter (Marriott) · Dave Young (VP Retail Media, Dick\'s Sporting Goods) · Mod: Darius Meadon (Mirakl CMO)',''],
+['Mon','12:00 PM','Female Quotient','Power of the Pack®: Relationships Scale Impact','Susan Irving (Kruger Products) · Dustee Jenkins (Chief Public Affairs, Spotify) · Kirsten Rhodes (Deloitte)',''],
+['Mon','12:00 PM','Sport Beach','More Than a Moment: Shared Brand Partnerships That Last','Shaquille O\'Neal (NBA Legend & Entrepreneur) · Lina Polimeni (SVP CMO, Eli Lilly)',''],
+['Mon','12:00 PM','Brand Innovators','A–Z: The Top Trends Shaping 2026 and Beyond','Mod: Oyin Akiniyi (Global Brand Director, Chivas Regal)',''],
+['Mon','12:00 PM','Brand Innovators','Fireside Chat: Ford Motor Company','Markus Hutchins (Sr. Director, Global Brand, Ford) · Mod: Jason Kunkel-de Cesero (AdQuick CDO)',''],
+['Mon','12:05 PM','Adweek House','The End Zone Is Everywhere: Fandom Beyond the Field','Glenn Cole (Founder, 72andSunny) · Tim Ellis (EVP CMO, NFL) · Mod: Alison Weissbrot (Adweek)',''],
+['Mon','12:30 PM','Female Quotient','The Multi-Hyphenate: Owning Your Story Across Roles','Eva Longoria (Actor, Producer, Director, Co-Founder Hyphenate Media) · Mod: Karla Pita Loor (CSO, Hyphenate)',''],
+['Mon','12:30 PM','Brand Innovators','Beyond the Moment: Building Lasting Brand Impact Through Youth Soccer','Gerardo Soto (VP Media & Sports Marketing, Lowe\'s) · Mod: Nicole McCormack (TeamSnap)',''],
+['Mon','12:30 PM','Sport Beach','Why We Still Sponsor Things: The New Value of Sports Investment','Kenny Mitchell (CMO, Levi Strauss) · Patrick O\'Keefe (CMO, e.l.f. Beauty) · Kenneth Suh (CSO, Nexxen) · Rachel Thornton (CMO, Adobe Enterprise)',''],
+['Mon','12:35 PM','Adweek House','Social Isn\'t Failing Brand Building. The Creative Approach Is. (Creatively Squared)','Lola Bakare · Indy Khabra (Livewire) · Shaina Rainford (CEO, Creatively Squared) · Kimberly Storin · Scott Thomas',''],
+['Mon','12:35 PM','Brand Innovators','Beyond the Transaction: Building Emotional Equity Through Sport','Cynthia Kleinbaum (GameChanger) · Toni Roeller (Dick\'s) · Emily Silver (CMO, Dick\'s) · Mod: Jonathan Anastas (Rumble CMO)',''],
+['Mon','1:00 PM','Female Quotient','Beyond the Title: The Legacy of Leadership','Christina Fair (President, L\'Oréal Consumer Products NA) · Carol Hutchinson (Microsoft) · Ashley Kechter (Vuori) · Sam Palmer (Chase Media Solutions)',''],
+['Mon','1:00 PM','Sport Beach','The Fan Equation: Decoding Behavior in the Data Economy','Dan Gardner (Code and Theory) · Damar Hamlin (NFL Player & Philanthropist) · Matt Spiegel (TransUnion) · Edwin Wong (Uber Advertising)',''],
+['Mon','1:00 PM','Brand Innovators','Agentic Creative In Action: Turning Innovation into Impact','Marie Knight (Director AI Creative, Adobe) · Mod: Jaime Nash (The Trade Desk)',''],
+['Mon','1:00 PM','Brand Innovators','Leveraging AI and Innovation to Drive Growth','Eric Glass (CMO, Dayforce) · Meghan Johnson (Mondelēz) · Dan Bartfield (VP Global Digital Marketing, Suntory) · Mod: Shafqat Islam (Optimizely)',''],
+['Mon','1:20 PM','Adweek House','Creative That Performs: Turning Intelligence Into Impact (CVS Media Exchange)','Parbinder Dhariwal (VP GM, CVS Media Exchange) · Mod: Zoë Ruderman (CCO, Adweek)',''],
+['Mon','1:25 PM','Brand Innovators','How Brands Turn Cultural Relevance into Lasting Growth','Brandon Baum (StudioB/YouTube) · Pamela Brown (Target) · Zoe Housman (VP Marketing, L\'Oréal) · David O\'Connor (Universal Entertainment)',''],
+['Mon','1:35 PM','Brand Innovators','Creativity at Scale: How Generative AI is Transforming Marketing','Faizan Buzdar (CEO, Roll.AI) · Gina Igwe (DoorDash) · Jess Rosenberg (AirOps) · Brandon Lentino (CCO, Viral Nation)',''],
+['Mon','1:50 PM','Adweek House','Beyond Sales Lift: How Top Brands Build Sustainable Growth (Fetch)','Laura Knebusch (CMO, Georgia-Pacific) · Ben Sylvan (SVP, Keurig Dr Pepper) · Robin Wheeler (CRO, Fetch) · JiYoung Kim',''],
+['Mon','2:00 PM','Female Quotient','Built to Disrupt: The New Rules of Brand Growth','Lauren Liss (Head of Loyalty & Spend Experiences, Capital One)',''],
+['Mon','2:00 PM','Sport Beach','The Mentor Behind the Power Player','Amy Hu (CMO, New York Life) · Maggie Malek (CEO, Crispin) · Alex Rodriguez (Chairman/CEO, A-Rod Corp; Co-Chair, Minnesota Timberwolves)',''],
+['Mon','2:00 PM','Brand Innovators','Fireside Chat: 72andSunny × NFL CMO','Glenn Cole (72andSunny) · Tim Ellis (EVP CMO, NFL) · Mod: Brian Benedik (CRO, Weather Company)',''],
+['Mon','2:10 PM','Brand Innovators','Fireside Chat: Zillow Group × Canvas Worldwide','Ravi Kandikonda (SVP, Zillow Group) · Paul Woolmington (CEO, Canvas Worldwide) · Mod: Sam Amiri (Life360)',''],
+['Mon','2:30 PM','Female Quotient','Rewrite the Rules: Creativity Unbounded','Robyn DelMonte (Girlbosstown) · Lisa Holme (VP, Roku Media) · Jess Ling (EVP Global Advertising, Amex) · Mod: Willa Bennett (EIC, Cosmopolitan)',''],
+['Mon','2:30 PM','Sport Beach','How the Brands Behind Youth Sports Are Building Next-Gen Fans','Jessica Henrichs (CEO, DonerColle Partners) · Diana Taurasi (WNBA Legend & 6x Olympic Gold Medalist)',''],
+['Mon','2:30 PM','WSJ Journal House','More Than Memories: Measuring Experiential Impact','Jimmy Knowles (Canva) · Melissa Levy (Sparks) · Craig McNary (Xbox) · Erin Oles (Salesforce) · Mod: Raakhee Mirchandani',''],
+['Mon','2:35 PM','Brand Innovators','Fireside Chat: Mastercard Americas','Rustom Dastoor (EVP Head of Marketing, Mastercard Americas) · Mod: Jean Daniel Germain (Camphouse)',''],
+['Mon','2:40 PM','Adweek House','How the Next 12 Months Will Define the Next Decade of Marketing (Zeta Global)','',''],
+['Mon','3:00 PM','Female Quotient','FQ CMO: Owning the Growth Mandate','Lara Balazs (CMO, Adobe) · Julia Goldin (Chief Product & Marketing Officer, LEGO) · Dara Treseder (CMO, Autodesk) · Mod: Joanne Bradford (FQ Advisor)',''],
+['Mon','3:00 PM','Sport Beach','Game On: How Gaming Became Sport\'s Most Powerful Media Channel','Emily Ketchen (SVP CMO, Lenovo) · Indy Khabra (Co-CEO, Livewire) · Naveen Tewari (Founder & CEO, InMobi Group)',''],
+['Mon','3:00 PM','Sport Beach','Executive Roundtable: The New Rules of Fan Engagement (EA Sports)','Andrea Hopelain (GM & SVP Marketing, EA Sports)',''],
+['Mon','3:00 PM','Brand Innovators','Balancing Digital and Human-Centricity in Modern Marketing','Jennie Platt (CMO, TD Bank US) · Mod: Alex Sherman (Bluefish)',''],
+['Mon','3:00 PM','Brand Innovators','Lessons, Wins and What\'s Next for AI','Wendy Bergh (CMO, Rakuten Rewards) · Alexandra Debow (swsh) · John Nitti (Global CBO, adMarketplace) · Jay Wardle (President, Sojern)',''],
+['Mon','3:05 PM','Adweek House','From AI to AX: Turning Fan Moments Into Elevated Experiences (EY Studio+)','Hanne Jesca Bax (Global Vice Chair, EY) · Laurence Buchanan (Global Leader, EY) · Jon Gieselman (Chief Growth Officer)',''],
+['Mon','3:30 PM','Female Quotient','The Sound of Fandom: How Audio Fuels Fan Engagement','Katie Nolan (Host, SiriusXM) · Kameryn Stanhouse (VP, IBM) · Mod: Kelli Hurley (VP, SiriusXM)',''],
+['Mon','3:30 PM','Sport Beach','The Business Case for Athlete Advocacy','Kelly Mahoney (CMO, Ulta Beauty) · CC Sabathia (Baseball Hall of Famer)',''],
+['Mon','3:35 PM','Brand Innovators','How Lionsgate Used AI to Turn Creativity into Performance','John Koenigsberg (EVP, Horizon) · Danielle Otero (EVP Global Paid Media, Lionsgate) · Mod: Alex Collmer (Vidmob)',''],
+['Mon','4:00 PM','Brand Innovators','The AI-First Marketing Organization','Renee Doerre (Life360) · Niamh O\'Leary (VP, 6Sense) · Jeremy Krall (VP, Qualcomm) · Michael Lehman (President, Equativ)',''],
+['Mon','4:10 PM','Brand Innovators','The New Streaming Wars: Netflix, Ads and the Future of Attention','Amy Reinhard (President of Advertising, Netflix) · Janice Min (CEO & EIC, Ankler Media)',''],
+['Mon','4:15 PM','WSJ Journal House','AI and the New Creative Freedom in B2B','Wen Sang (Genspark AI) · Mod: Phillipa Leighton-Jones (WSJ Trust)',''],
+['Mon','4:20 PM','Adweek House','In Conversation with TelevisaUnivision','Multicultural media strategy discussion',''],
+['Mon','4:30 PM','Female Quotient','Passion to Participation: Building the Fan Community','Josh Noval (SVP, NBCUniversal) · Uzma Rawn Dowler (CMO & SVP, MLB) · Mod: Marcel Dinkins (Peloton Instructor)',''],
+['Mon','4:30 PM','Brand Innovators','Fireside Chat: SharkNinja','Michelle Crossan-Matos (Chief Growth Officer, SharkNinja) · Mod: Glenn Pape (Vizio)',''],
+['Mon','4:40 PM','Adweek House','The Bosstick Blueprint for Building a Media Empire','Michael Bosstick (CEO, Dear Media) · Lauryn Bosstick (Founder, The Skinny Confidential) · Mod: Zoë Ruderman (Adweek)',''],
+['Mon','5:00 PM','Adweek House','The New Balance: Creative Experimentation Meets Brand Consistency (Adobe Sunset Series)','Hannah Elsakr (VP, Adobe) · Kyle Laughlin (SVP, Adobe) · Stephan Pretorius (CTO, WPP)',''],
+['Mon','5:30 PM','Adweek Off-site','ADWEEK DEALROOM LAUNCH: Sunset Sail (Solana Catamaran, Yacht Row)','Interactive reception aboard the Solana Catamaran',''],
+['Mon','5:30 PM','Female Quotient','From Moments to Movements: Experiential Connections','Thought leadership panel into open networking cocktails',''],
+// ── TUESDAY JUNE 23 ──
+['Tue','7:00 AM','Sport Beach','Strava Run Club','Hosted by Sweatwork · Angela Manuel Davis (Motivational Coach)',''],
+['Tue','7:00 AM','Sport Beach','Sweatwork Swim & Strength Club','Vesi Angelova (Global Triathlete) · Ron "Boss" Everline (Celebrity Trainer)',''],
+['Tue','8:15 AM','Adweek House','Commerce Morning in Cannes (SMG)','High-level interactive frameworks alongside SMG',''],
+['Tue','8:30 AM','Ad Age','CMO Roundtable & Leading Women Breakfast','Peer networking — The List Lounge',''],
+['Tue','8:30 AM','Sport Beach','Executive Roundtable: Athletes as Co-Creators (Glance by InMobi)','',''],
+['Tue','9:00 AM','Female Quotient','The New Entertainment Era: Women Driving Influence','Frances Berwick (Chairman, NBCU) · Liz Jenkins (CBO, NBCU Entertainment) · Alison Levin (President, NBCU) · Rachel Zoe (RHOBH) · Mod: Leah Wyar',''],
+['Tue','9:00 AM','Sport Beach','Business Insider CMO Breakfast','Invite-only brand marketing check-in','i'],
+['Tue','9:00 AM','WSJ Journal House','The New Storefront: AI and the Future of Retail Experience','Paul D\'Arcy (Moloco) · Ryan Dullea (Reckitt) · Mark Williamson (Costco) · Mod: Raakhee Mirchandani (WSJ)',''],
+['Tue','9:15 AM','Brand Innovators','Opening Remarks','Brandon Gutman · Marc Sternberg (Co-CEOs) · Gisela Germano (CCO) · Pearl Tam (SVP Content)',''],
+['Tue','9:30 AM','Female Quotient','Shaping the Future: Built for a New Consumer Era','Winnie Burke (Roblox) · Rachel Daydou (EY Studio+) · Shaina Zafar (United Talent Agency)',''],
+['Tue','9:30 AM','Brand Innovators','Fireside Chat: Unilever Personal Care','Rani Al Hajji (Chief Growth Officer, Unilever) · Afke van de Klashorst · Claudia Tezcan (Dove) · Mod: Patricia Camden (EY Studio+)',''],
+['Tue','9:30 AM','Adweek House','Performance by Design: AI, Platforms and Human Expertise (SMG)','Jenny Holleran (VP Solutions, SMG) · Claire Trbovic (Global Head of Product, SMG) · Mod: Alison Weissbrot (Adweek)',''],
+['Tue','9:45 AM','WSJ Journal House','The WSJ Newsroom: A Conversation with Alan Cumming','Alan Cumming (Actor/Author) · Jackie Jantos (CMO, Hinge) · Mod: Katherine Finnerty (WSJ)',''],
+['Tue','9:50 AM','Adweek House','The Store as Stage: Reinventing the Shopper Experience (SMG)','Paul Lentz (Executive Director) · Austin Leonard (VP GM) · Liz Roche (VP Media) · Mod: Sean Crawford',''],
+['Tue','10:00 AM','Female Quotient','Add to Cart: Owning the Next Media Moment','Sarah Larsen (CMO, Hisense USA) · Doug Sweeny (CMO, ŌURA) · Mod: Moira Forbes (EVP, Forbes)',''],
+['Tue','10:00 AM','Brand Innovators','Fireside Chat: PepsiCo','Mark Kirkham (CMO, PepsiCo) · Mod: Patricia Camden (EY Studio+)',''],
+['Tue','10:05 AM','Brand Innovators','Fireside Chat: Southwest Airlines','Sabrina Callahan (SVP Chief Digital & Marketing Officer, Southwest Airlines)',''],
+['Tue','10:20 AM','Adweek House','The Race to Reinvent Retail Media (Mirakl Ads)','Patrick Albano (CRO) · Anne Hallock (VP, Mirakl Ads) · Jill Toscano (VP Media) · Mod: Ryan Joe (Adweek)',''],
+['Tue','10:25 AM','Brand Innovators','Building Fandom & Friends Through Technology & Experiences','Michelle Crossan-Matos (SharkNinja) · Alison Payne (CMO, HEINEKEN USA)',''],
+['Tue','10:30 AM','Female Quotient','Co-Creating the Future: Agentic AI at Work','Benjamin Felix (CMO, TripleLift) · Jenny Kelly (Deloitte Digital) · Sanjna Parulekar (SVP, Salesforce) · Francessca Vasquez (VP, AWS)',''],
+['Tue','10:30 AM','Brand Innovators','Building Iconic Brands Through Authentic Partnerships','Emilie Bridon (Microsoft) · Karen Ehrlich (Estée Lauder) · Anuj Chhabra (Pernod Ricard) · Dr. Charlene Thomas (Universal Music Group)',''],
+['Tue','10:50 AM','Brand Innovators','From Attention to Advocacy','Brooke Brown (SVP, U.S. Bank) · Alex Frias (CMO, Steve Madden) · Jessica Grigoriou (SVP, Unilever) · Jim Squires (CMO, Reddit)',''],
+['Tue','11:00 AM','Female Quotient','Leading Transformation: Brands, Trust & AI','Beth Ann Kaminkow (CEO Americas, dentsu) · Tracy-Ann Lim (Chief Media Officer, JPMorganChase) · Mod: Seth Matlins',''],
+['Tue','11:00 AM','Sport Beach','First Touch to Final Whistle: Global Brands Meet America\'s World Cup','Ben James (GALE) · Rick Pineda (Diageo) · Cristian Racioppi (Channel Factory)',''],
+['Tue','11:00 AM','Brand Innovators','Powered by Story: The New Playbook for Brands, Fans & Entertainment','Patrick O\'Keefe (e.l.f. Beauty) · Beth Trentacoste (Paramount Media Labs) · Mod: Lydia Daly (EVP, Paramount)',''],
+['Tue','11:10 AM','Adweek House','Inside the New Signal-to-Spend Blueprint Redefining ROI','David Parisi (SVP Client Partnerships)',''],
+['Tue','11:30 AM','Female Quotient','Beyond Measurement: The New Shape of Marketing Impact','Selin Song (President, Google) · Jamie Seltzer (Global Chief Data Officer, Havas) · Shana Stephenson (CBO, NY Liberty) · Mod: Caroline Dettman',''],
+['Tue','11:30 AM','Sport Beach','Executive Roundtable: The Premium Placement You\'re Not Using (The Trade Desk)','Elle Duncan (Lead Sports Host, Netflix)',''],
+['Tue','11:30 AM','Brand Innovators','Building Loyalty in the Attention Economy','Lauren Benedict (VP, Roku) · Lindsay Amodio (VP, Sensor Tower) · Amanda Bailey (VP, Lowe\'s) · Mod: Ashley Travis (Pizza Hut)',''],
+['Tue','11:35 AM','Adweek House','From Cautious to Fearless: How Brands Can Win in the AI Era','Nicolas Comestaz (VP Global Data, Coty) · Richard Raddon (Co-Founder, Zefr) · Mod: Mark Stenberg (Adweek)',''],
+['Tue','11:50 AM','Brand Innovators','Storytelling that Wins Culture','Sara Brooks (CGO, BetterHelp) · Behnaz Ghahramani (SVP, Marriott) · Sarah Reinecke (SVP, Mars) · Dara Treseder (CMO, Autodesk) · Mod: Ben Jeffries',''],
+['Tue','11:55 AM','Adweek House','(Summer) House Rules for Building Modern Fandom','Mia Calabrese (Cast Member) · Lindsay Hubbard (Cast Member) · Karen Kovacs (NBCU) · Mod: Zoë Ruderman (Adweek)',''],
+['Tue','12:00 PM','Female Quotient','FQ CEO: The Making of a CEO','Eva Erdmann (CEO, Kate Spade NY) · Christine Gambino (CEO, Omni) · Lisa Sherman (President & CEO, The Ad Council) · Mod: Shelley Zalis',''],
+['Tue','12:00 PM','Sport Beach','More Than a Moment: Eli Lilly and Shaq Build a Partnership That Lasts','Shaquille O\'Neal (NBA Champion) · Lina Polimeni (SVP CMO, Eli Lilly)',''],
+['Tue','12:00 PM','Brand Innovators','From Discovery to Checkout in a Prompt: How AI is Reshaping Shopping','Raji Behal (Head of Western Europe, Klarna) · Mod: Michael Scott (VP, AdMarketplace)',''],
+['Tue','12:20 PM','Adweek House','Omnichannel Healthcare Marketing Living Systems (Doceree)','Elizabeth Beringer (Real Chemistry) · Kamya Elawadhi (Doceree) · Harshit Jain (Doceree) · Hyun Lee-Miller (GoodRx) · Andrea Palmer (CEO, Publicis Health)',''],
+['Tue','12:25 PM','Brand Innovators','From Reach to Relevance: How Cultural Moments Drive Media Impact','Damon Berger (Gap) · Kristin Lane (MassMutual) · Dave Kersey (SharkNinja) · Ben Sylvan (Keurig Dr Pepper) · Mod: Adam Gerber (Media.net)',''],
+['Tue','12:30 PM','Female Quotient','Artificial Intelligence × Humanity: The New Standard for Experience','Patricia Camden (US CX Leader, EY Studio+) · Mod: Brittaney Kiefer (Creative Editor, Adweek)',''],
+['Tue','12:30 PM','Brand Innovators','Maintaining Brand Consistency on a Global Scale','Caitlin Adams Maier (FedEx) · Abby Cunningham (NYSE) · Aparna Dubey (Kimberly-Clark) · Veronika Kryuchkova (Reckitt)',''],
+['Tue','1:00 PM','Female Quotient','Leading the Agentic Shift: Why the Future of AI is Human-Centric','Kristine Kobe (EVP, Global Client Lead, Monks)',''],
+['Tue','1:00 PM','Sport Beach','Business, Brands, and Ball: How Athletes and Brands Power Fandom','Sue Bird (WNBA Champion) · Chris Paul (NBA All-Star & Philanthropist) · Damaune Journey (Global CGO, 72andSunny)',''],
+['Tue','1:00 PM','Brand Innovators','Marketing at the Speed of Culture','Jonathan Adashek (IBM) · Dr. Anthony Anderson (Actor & Entrepreneur) · Billy Bohan Chinique (Virgin Voyages) · Angie Smith (CEO, Invision) · Mod: Dr. Marcus Collins',''],
+['Tue','1:05 PM','Brand Innovators','The Invisible Work of Leadership: Power, Pressure & Staying Human','Sarah Collinson (CEO, HAVAS NY) · Steph Bleymaier (Foot Locker) · Kameryn Stanhouse (VP, IBM)',''],
+['Tue','1:20 PM','Adweek House','New Age, New Agency Model','Sir Martin Sorrell (Founder, S4 Capital) · David Bell (Board Director) · Michael Beebe (CEO, Dstillery) · Mod: Will Lee (CEO, Adweek)',''],
+['Tue','1:30 PM','Female Quotient','Momentum by Design: The Power of Experience','Pamela Brown (Target) · Nathan Friedman (Understood.org) · Justine Frostad (Cognitiv) · Kerry-Anne Hamilton (#Paid) · Mod: Alice McKown',''],
+['Tue','1:30 PM','Brand Innovators','Beyond the Trend Cycle: Building Brands That Last','Zack Jerome (Microsoft) · Jay Wardle (Sojern) · Mod: Chandreyi Saha Davis (VP, Yahoo)',''],
+['Tue','1:35 PM','Brand Innovators','Beyond the Game: How Brands Win in Sports & Culture','Oyin Akiniyi (Chivas Regal) · Brian Quarles (rEvolution) · Brad Ross (Bank of America) · Jason Taylor (CRO, USA TODAY) · Mod: Diogo Guimaraes',''],
+['Tue','2:00 PM','Adweek House','Business of News (Ad Fontes Media)','Vanessa Otero (Founder & CEO, Ad Fontes Media) · Kara Swisher (Pivot/Vox Media) · Mod: Mark Stenberg (Adweek)',''],
+['Tue','2:00 PM','Female Quotient','Always in Motion: Brands That Move with Us','Lindsay Amodio (Sensor Tower) · Sarah Harms (Roku) · Kelly McMahon (LG Ad Solutions) · Jessica Padula (Nespresso USA) · Mod: Jayde Powell',''],
+['Tue','2:00 PM','Sport Beach','Meeting the Moment: Confidence, Culture, and the Performance Playbook','Blanca Juti (L\'Oréal Groupe) · Noah Lyles (Olympic 100m Champion) · Joy Robins (Global CAO, The New York Times)',''],
+['Tue','2:00 PM','Brand Innovators','Audience First, Channel Second','Ryan Engel (Bayer) · Shannon Hoyer (Dick\'s Sporting Goods) · Jeff Staple (Founder, STAPLE) · Mod: Leah Malone (Pixability CRO)',''],
+['Tue','2:10 PM','Brand Innovators','Balancing Legacy with Future-Forward Brands','Brad Hiranaga (Marriott) · Chris Paul (NBA All-Star) · Erin Silvoy (SVP, Starbucks) · Selina Sykes (Global VP, Unilever) · Mod: Shane Dwyer (Lyft Ads)',''],
+['Tue','2:30 PM','Female Quotient','Built Different: From the Hardwood to the Boardroom','Carmelo Anthony (NBA Hall of Famer) · Asani Swann (CEO, VII(N) The Seventh Estate) · Mod: Christine Lane (FQ)',''],
+['Tue','2:30 PM','Sport Beach','The "You\'ve Made It" Moment','Mark Kirkham (CMO, PepsiCo Beverages US) · David Tinson (Electronic Arts) · Mod: Moira Forbes (EVP, Forbes)',''],
+['Tue','2:30 PM','Brand Innovators','Storytelling in the Scroll Era','Mark Rooks (Dick\'s Sporting Goods) · Fabio Ruffet (Mars) · Scott Swartz (Target) · Lana Slygh (Thrivent) · Mod: Carl Bauml (Life360)',''],
+['Tue','2:50 PM','Adweek House','Tuning Into Culture: Why Relevance Can\'t Be Scripted (EightPM)','Leonardo Aizpuru (CMO, EightPM) · Cheryl Guerin (Mastercard) · Joy Ogunneye (Kenvue) · Josh Line (CMO) · Mod: Brittaney Kiefer (Adweek)',''],
+['Tue','2:50 PM','Brand Innovators','Examining Brands That Shape Culture','Andrew Choi (Singer/Songwriter) · Dario Spina (Paramount Media Labs) · Roberto Stanichi (Mattel) · Rich Ting (Actor) · Mod: Gracie Schram',''],
+['Tue','3:00 PM','Female Quotient','FQ CMO: Owning the Experience','Mimi Swain (CMO, Amazon Devices) · Rachel Thornton (CMO, Adobe Enterprise) · Fabiola Torres (Global CMO, Gap) · Mod: Talia Bender',''],
+['Tue','3:00 PM','Sport Beach','Building the World, Not Just the Win','Taylor Montgomery (Taco Bell) · Megan Rapinoe (Soccer Champion & Activist) · Amy Reinhard (President Advertising, Netflix) · Shana Stephenson (CBO, NY Liberty)',''],
+['Tue','3:00 PM','Sport Beach','Executive Roundtable: Creators Are Moving Culture, Is Your Spend Keeping Up? (Comscore)','',''],
+['Tue','3:00 PM','Brand Innovators','The Insight Revolution: Where Media, Data, and Creativity Converge','Brooke Brown (U.S. Bank) · Beverly Jackson (VP of Brand, Zillow Group)',''],
+['Tue','3:20 PM','Brand Innovators','Fireside Chat: Bose','Jim Mollica (President, Luxury Audio, Bose) · Mod: Alex Boras (President, Blis)',''],
+['Tue','3:30 PM','Female Quotient','More Than the Game: Life, Leadership, Legacy','Miles Chamley-Watson (Olympic Medalist) · Robert Griffin III (CEO, RG3 Sports) · Mod: Damaune Journey (72andSunny)',''],
+['Tue','3:30 PM','Sport Beach','The Next Billion Fan Sport','Connor Pardoe (CEO, Pickleball Inc) · Bex Smith (Crux Football) · Joe Staples (Coinbase) · Mod: Pablo Torre',''],
+['Tue','3:40 PM','Adweek House','The Kids Are AIght','Judy John (Global CCO) · Sean Tindale (Head of Brand) · Lauren Greenfield (Emmy-Winning Director) · Mod: Rebecca Stewart (Adweek)',''],
+['Tue','4:00 PM','Brand Innovators','The Ideas Defining Cannes 2026','Joe DeMiero (Havas Creative) · Rema Vasan (Business Marketing, TikTok)',''],
+['Tue','4:00 PM','Brand Innovators','The New Media Mix: Connecting Physical and Digital Worlds','Patrick Callinan (T-Mobile Advertising) · Sarah Larsen (CMO, Hisense) · Mod: Tara King (Bacardi)',''],
+['Tue','4:05 PM','Adweek House','The Growth Mandate Brands Must Not Ignore (Mutinex)','Nick Garrett (CEO, Mutinex) · Hen Innis (Global CEO) · Vinny Rinaldi (VP Consumer Connections) · Victoria Sjardin (Mars) · Mod: Kendra Barnett (Adweek)',''],
+['Tue','4:15 PM','WSJ Journal House','Making Storytelling a Brand\'s Best Investment','Mark Marshall (NBCUniversal) · Seth Meyers (Late Night Host) · Josh Stinchcomb (CRO, Dow Jones)',''],
+['Tue','4:30 PM','Sport Beach','SPORT BEACH Open Play: Flag Football','Interactive tournament',''],
+['Tue','4:30 PM','Female Quotient','Unwell Beach Party: Conversations & Cocktails','Creator insight panels into beach networking',''],
+['Tue','4:35 PM','Brand Innovators','From Attention to Loyalty: The Power of Cultural Relevance','Julie Foster (SVP, Electronic Arts) · Tom Evans (Kraft Heinz) · Danielle Hawley (Global Head of Creative, Uber)',''],
+['Tue','5:00 PM','WSJ Journal House','WSJ CMO Council Cocktails (Invite Only)','Maryam Banikarim · Alan Murray (WSJ Leadership Institute)','i'],
+['Tue','5:00 PM','Adweek House','Making a Moment: When Creativity Becomes Culture (Adobe Sunset Series)','Tim Ellis (CMO, NFL) · Kelly Mahoney (CMO, Ulta Beauty) · Stacy Martinet (Adobe) · Anne Marie Nelson-Bogle (YouTube Ads) · Mod: Jenny Rooney (Adweek)',''],
+['Tue','7:00 PM','Sport Beach','72andSunny Dinner (Invite Only)','Private executive dining','i'],
+['Tue','Evening','Roundel House','Tuesday Cocktails','General brand hospitality','q'],
+// ── WEDNESDAY JUNE 24 ──
+['Wed','7:00 AM','Sport Beach','Sweatwork Morning Workouts','Vesi Angelova (Global Triathlete) · Ron "Boss" Everline (Celebrity Trainer) · Angela Manuel Davis',''],
+['Wed','8:15 AM','Adweek House','Building Better Web Experiences (Invite-Only Breakfast)','Kendra Barnett (Adweek) with Chrome & global tech executives','i'],
+['Wed','8:30 AM','Ad Age','Leading Women at Cannes Breakfast','Community updates — The List Lounge',''],
+['Wed','8:30 AM','Brand Innovators','Breakfast & Registration','',''],
+['Wed','9:00 AM','Female Quotient','Full Speed Ahead: Women\'s Sports Accelerate','Jane Wakely (EVP CMO, PepsiCo) · Susie Wolff (MD, F1 Academy) · Mod: Julia Munslow (WSJ)',''],
+['Wed','9:00 AM','Brand Innovators','Opening Remarks','Brandon Gutman · Marc Sternberg (Co-CEOs) · Gisela Germano (CCO) · Pearl Tam (SVP Content)',''],
+['Wed','9:15 AM','Adweek House','Leadership Voices Live: The AI Trust Gap','Mike Peralta (Global CRO, Future plc) · Mod: Mark Stenberg (Adweek)',''],
+['Wed','9:15 AM','Brand Innovators','Fireside Chat: Ulta Beauty','Kelly Mahoney (CMO, Ulta Beauty) · Mod: Lauren Griewski (Chase Media Solutions)',''],
+['Wed','9:30 AM','WSJ Journal House','An Enduring Tenure: How CMOs Build Staying Power','Claudine Cheever (Pinterest) · Aude Gandon (Estée Lauder) · Elizabeth Rutledge (American Express) · Mod: Willem Marx (WSJ)',''],
+['Wed','9:30 AM','Sport Beach','Creator Field Day','Presented by TikTok & Whalar Group',''],
+['Wed','9:30 AM','Sport Beach','Executive Roundtable: Investing in the Future of Women\'s Sports (Scripps)','',''],
+['Wed','9:45 AM','Brand Innovators','Keeping an Iconic Brand Forever Young (KFC)','Christophe Poirier (Global Chief Concept Officer, KFC) · Mod: Lisa Rosenberg (Global President, Allison Worldwide)',''],
+['Wed','9:50 AM','Adweek House','Winning in Sports Marketing Year Round','Todd Kaplan (CMO NA) · Steve Phillips (Zappi) · Gabrielle Wesley (Mars Confectionery) · Mod: Ryan Joe (Adweek)',''],
+['Wed','10:00 AM','Female Quotient','Connection Without Friction: Reaching Audiences Seamlessly','Ryan Gavin (Slack) · Behnaz Ghahramani (Marriott) · Leslie Lee (T-Mobile Advertising) · Anna Spanfeller (Cognitiv) · Mod: Talia Bender',''],
+['Wed','10:00 AM','Brand Innovators','How New Technologies & AI Affect the Agency Model','Colleen Hotchkiss (Zenith) · Peggy McCann (GSD&M) · Anthony Romano (Laughlin Constable) · Anne Stagg (Digitas UK)',''],
+['Wed','10:00 AM','Sport Beach','IRL For Good: How Real-World Media Can Show Up For Mental Health','',''],
+['Wed','10:10 AM','Brand Innovators','State of the Industry: Innovation, Disruption and the Road Ahead','Rob Master (Edgewell) · Ricardo Aspiazu (Verizon) · James Whitemore (Indeed) · Elaine Rodrigo (Reckitt) · Mod: Tal Jacobson',''],
+['Wed','10:15 AM','Adweek House','Pick Me, Love Me, Buy Me: The Science of Brand Desire (Havas)','Tyler Denk (beehiiv) · Lea Karam (Havas) · Joanna Lawrence (Havas) · Mirko Mueller-Goolsbey (Havas) · Mark Sinnock (Havas) · Mod: Alison Weissbrot (Adweek)',''],
+['Wed','10:15 AM','WSJ Journal House','WSJ Leadership Institute Day Session (Closed Workshop)','C-Suite structures',''],
+['Wed','10:30 AM','Female Quotient','Streaming, Scrolling & Tuning Out: Winning Attention in Modern Media','Hilary Bastel (LinkedIn) · McKenzie Roese (DoorDash) · Mod: Jenn LaRocco (SiriusXM Media)',''],
+['Wed','10:30 AM','Brand Innovators','From Shelf Staple to Cultural Resonance: Amplifying eos Body','Kelsey Newberry (eos) · Liza Suloti (Shadow) · Mod: Felicia Asiedu (Cvent Marketing Director)',''],
+['Wed','10:30 AM','Ad Age','Ad Age × Courage Fireside Chat','Interactive panel — The List Lounge',''],
+['Wed','10:45 AM','Brand Innovators','Brand as Your Moat: Inside AWS\'s Marketing Reinvention','Melissa Grant · Tim Hoppin · Katherine Kemp · Hallie Sinclair (all AWS) · Mod: Grant McDougall (BlueOcean)',''],
+['Wed','10:55 AM','Brand Innovators','Brandformance: The New Era of Personalization','Mickey Neuberger (realtor.com) · Maria D\'Amato (GSD&M) · Kate Rush Sheehy (Chief Strategy Officer, GSD&M)','r'],
+['Wed','11:05 AM','Adweek House','Two Chairs: Chase Media Solutions and Musely','Lauren Griewski (Chase Media Solutions) · Jack Jia (Founder & CEO, Musely)',''],
+['Wed','11:10 AM','Brand Innovators','Fireside Chat: Amazon','Jo Shoesmith (Global Chief Creative Officer, Amazon) · Mod: Guillaume Grimbert (VP, Perion)',''],
+['Wed','11:20 AM','Brand Innovators','Brands Breaking Through with Cultural Relevance','Jessica Goon (McCormick & Company) · Jessica Henrichs (CEO, Colle McVoy)',''],
+['Wed','11:30 AM','Female Quotient','Leading Through Change: Executive Presence in the AI Era','Gemini Babla (Intuit) · Sally Lee (Canvas Worldwide) · Kara Puccinelli (Nexxen) · Tomás Puig (Alembic)',''],
+['Wed','11:30 AM','Equativ Yacht','Clicks to Conversions: Designing Creative That Closes the Loop','Female Quotient framework at Jetée Albert Edouard',''],
+['Wed','11:40 AM','Adweek House','The Silk Press Conference Heard Around the World','Reema Amin (Collectively) · Raven Walker (Collectively) · Mod: Rebecca Stewart (Adweek)',''],
+['Wed','11:45 AM','Brand Innovators','Fireside Chat: Kraft Heinz','Helen Andrews (Johannes Leonardo) · Jessica Vultaggio (Kraft Heinz) · Mod: Joy Talbot (Analytic Partners)',''],
+['Wed','12:00 PM','Roundel House','Lunch with Mel Robbins (Invite Requested)','Special author check-in','q'],
+['Wed','12:00 PM','Female Quotient','Beyond the Buy: Turning Media into Meaning','Lara Barmish (Walmart Connect) · Nili Klenoff (Mastercard Commerce Media) · Kristina Shepard (NBCUniversal) · Mod: Alexandra Steigrad (NY Post)',''],
+['Wed','12:00 PM','Sport Beach','From Fairway to Fast Lane: How Brands and Athletes Extend Across Sports','Lando Norris (McLaren F1) · Louise McEwen (CMO, McLaren Racing) · Toni Cowan-Brown (Esses Magazine)',''],
+['Wed','12:00 PM','Brand Innovators','Fireside Chat: Chipotle','Stephanie Perdue (SVP, Chipotle) · Jamie Falkowski (CCO, Day One Agency) · Mod: Ryan Spicer (Atmosphere TV)',''],
+['Wed','12:00 PM','Adweek Off-site','The Next Frontier of Commerce Media (Solana Catamaran, Yacht Row)','Matthew Hogg (LiveRamp) · Marie Knight (Adobe) · Mod: Alison Weissbrot (Adweek)',''],
+['Wed','12:05 PM','Adweek House','From Who to Why: The Context Behind the Profile (Seedtag)','',''],
+['Wed','12:10 PM','Brand Innovators','Fireside Chat: Dropbox','Liz Armistead (Dropbox) · Taryn Crouthers (CEO, Big Spaceship)',''],
+['Wed','12:25 PM','Brand Innovators','2026 and Beyond: Media Innovation Outlook','Paloma Azulay (McDonald\'s) · James Clarke (Newell Brands) · Carmen Graf (Indeed) · Carmela Luzzi (Tripadvisor) · Mod: Rebecca Weidenbenner',''],
+['Wed','12:30 PM','Adweek House','Pivot Live with Kara Swisher and Scott Galloway','Scott Galloway (NYU Stern / Pivot) · Kara Swisher (On with Kara Swisher / Pivot)',''],
+['Wed','12:30 PM','Female Quotient','Uniting Through the Game: Sports as Cultural Connector','Gina Ballenger (Walmart Connect) · Anne Marie Nelson-Bogle (Google) · Jamie Stenziano (Ipsos) · Alix Teppel (Paramount) · Mod: Sarah Williams',''],
+['Wed','12:30 PM','Sport Beach','The Talent Is the Brand: Creating Lasting Conversations','Kevin Durant (NBA Champion & Boardroom) · Rich Kleiman (CEO, Boardroom) · Michael D. Ratner (OBM/Fanatics Studios) · Mod: Taylor Rooks',''],
+['Wed','12:35 PM','Brand Innovators','Fireside Chat: JPMorganChase','Leanne Fremar (Global CBO, JPMorganChase) · Thom Glover (CEO, American Haiku) · Mod: Yoann Michaux (EY Studio+)',''],
+['Wed','1:00 PM','Brand Innovators','The Human Element — Brand, Purpose, and the Agentic Shift','Heather Kehrberg (Amazon Ads) · Ash King (Firefly Enterprise Solutions) · Mod: Rovina Valashiya (AWS)',''],
+['Wed','1:00 PM','Brand Innovators','The Premium Effect: How Formula 1 Partnerships Drive Value','John Gerzema (CEO, The Harris Poll) · Erica Kerner (CMO, Standard Chartered) · Kraig Schulz (BERA.ai) · Mod: Elspeth Rollert',''],
+['Wed','1:25 PM','Adweek House','Stream On: The Next Era of Unified Media','Mike Keyserling (CEO, Philo) · Mod: Zoë Ruderman (CCO, Adweek)',''],
+['Wed','1:25 PM','Brand Innovators','Building Loyalty Through Emotional Connections','Kate Fedishen (Dick\'s Sporting Goods) · George Hammer (Marriott) · Shweta Harit (De Beers Group) · Veronique Mura (Edgewell) · Mod: Sarah Patel',''],
+['Wed','1:30 PM','Female Quotient','The Next Brave Yes: Hoda on Reinvention','Hoda Kotb (Journalist & CEO, Joy 101) · Mod: Shelley Zalis (CEO, FQ)',''],
+['Wed','1:30 PM','Sport Beach','The New Playbook: Women\'s Sports as a Scaled Business','Tara Davis-Woodhall (Olympic Gold Medalist) · Colie Edison (SVP, WNBA) · Kayla Green (Acting President, ATHLOS)',''],
+['Wed','1:30 PM','Brand Innovators','Fireside Chat: Mattel','Roberto Stanichi (EVP Chief Global Brand Officer, Mattel) · Mod: Alex Stock (EY Americas Innovation Leader)',''],
+['Wed','1:35 PM','Adweek House','Beyond the Ad Break: Turning Streaming TV Moments Into Outcomes (Amazon Ads / WACL Empower Cafe)','Esplanade de Pantiero',''],
+['Wed','1:55 PM','Adweek House','Reclaiming Discovery: Inside the New Art of Performance (Moloco)','Paul D\'Arcy (Moloco CMO) · Julie Foster (EA) · Dan Gardner (Code & Theory) · Stacy Malone (Meta) · Manu Orssaud (Duolingo) · Mod: Liz Kneebone (Adweek)',''],
+['Wed','2:00 PM','Female Quotient','The New Influence: Power Beyond the Feed','Mariana Antaya (quantifAI) · Andrea Gellert (Meta) · Kay Hsu (Spotify Creative Lab) · Claudia Navarro (SVP, Coca-Cola) · Mod: Jacqueline Tsekouras',''],
+['Wed','2:00 PM','Sport Beach','How to Cultivate a Winning Team Culture','Jaxon Smith-Njigba (NFL Wide Receiver) · Glenn Cole (72andSunny) · Tim Ellis (EVP CMO, NFL)',''],
+['Wed','2:00 PM','Brand Innovators','Commerce in Motion','Jill Kramer (Mastercard) · Jeanine Poggi (Editor-in-Chief, Ad Age)',''],
+['Wed','2:00 PM','Brand Innovators','Beyond Targeting: What It Actually Takes to Connect with Gen Z','Luis Garcia (Glass Labworks) · Chris Morgan (StatSocial) · Mod: Zoe Housman (VP Marketing, L\'Oréal)',''],
+['Wed','2:20 PM','Brand Innovators','Where Value is Moving: Media, Marketing, and Commerce','Nili Klenoff (Mastercard) · Brian Monahan (Albertsons Media Collective) · Lisa Valentino (President, Best Buy Ads) · Mod: Dianna Dilworth',''],
+['Wed','2:30 PM','Female Quotient','Tracing Roots, Crafting Legacy: The Marketing Power of Family History','Attica Jaques (CMO, Ancestry) · Tina Knowles (Parkwood Entertainment & Cecred) · Mod: Shelley Zalis (FQ)',''],
+['Wed','2:30 PM','Sport Beach','The Feed is the Field','Rollo Goldstaub (TikTok) · Uzma Rawn Dowler (MLB) · Alex Rodriguez (Chairman, A-Rod Corp) · Mod: Taylor Rooks',''],
+['Wed','2:45 PM','Adweek House','From Brand to Boardroom: The Rise of the Chief Communications Officer (Burson)','Craig Buchholz (CEO, Burson US) · Adam Collins (CCO) · Damon Jones (CCO, Procter & Gamble) · Mod: Jenny Rooney (Adweek)',''],
+['Wed','3:00 PM','Female Quotient','FQ CMO: Leading at the Speed of Culture','Alison Payne (CMO, HEINEKEN USA) · Oshiya Savur (CMO, e.l.f. Beauty) · Mod: Joanne Bradford (FQ Advisor)',''],
+['Wed','3:00 PM','Sport Beach','Welcome to Tee Time: The Cultural Unlocking of Golf','Ken Griffey Jr (Baseball Hall of Famer) · Michael Collins (ESPN Golf Analyst) · Anne Marie Nelson-Bogle (Google) · Daniel Sattelmeyer',''],
+['Wed','3:00 PM','Brand Innovators','Brand Building in a Signal Driven World','Mary Ann Belliveau (Snap Inc.) · Cheryl Guerin (Mastercard) · Kelsey Philpott (MLB) · Mod: Peter Adams (Marketing Dive)',''],
+['Wed','3:00 PM','Brand Innovators','The Future of Media: Trends Shaping What\'s Next','Sean Boyle (Starz) · Matthew Drengler (Podscribe) · Katie Gerlach (Ampersand) · Chris Winburn (Innovid by Mediaocean) · Mod: Traci Spiegelman',''],
+['Wed','3:20 PM','Adweek House','Winning the 2026 Consumer by Mapping the Future Path-to-Purchase (GroundTruth)','Katie Comerford (GroundTruth) · Rosie O\'Meara (CEO, GroundTruth) · Mod: Will Lee (CEO, Adweek)',''],
+['Wed','3:30 PM','Female Quotient','Beyond the Purchase: Building Loyalty for Every Generation','Kelly Mahoney (Ulta Beauty) · Christina O\'Rourke (United Airlines) · Mod: Talia Bender',''],
+['Wed','3:35 PM','Brand Innovators','Changing Behavior: The New Playbook for Health Brands','Richard Case (GoodRx) · Ed Cinca (Novo Nordisk) · Mod: Wendy Lund (Global CEO, Allison Worldwide)',''],
+['Wed','3:40 PM','Brand Innovators','Agents, Signals, and the Self-Driving Funnel','Susan Grossman (Mastercard) · Elav Horwitz (WPP) · Shiv Singh (Savvy Matters) · Lindsey Slaby (Sunday Dinner) · Mod: Isabel Perry',''],
+['Wed','3:45 PM','Adweek House','Marketing Vanguard Podcast Live (Edelman)','Rani Al Hajji (Unilever) · Mainardo de Nardis · Mod: Jenny Rooney (Adweek)',''],
+['Wed','4:00 PM','Female Quotient','Business Insider Daily Take: Big Brand, Startup Speed','Ryan Gavin (EVP & CMO, Slack) · Jessica Jensen (CMO, LinkedIn) · Mod: Anthony DeMaio (Business Insider)',''],
+['Wed','4:15 PM','Adweek House','More Than a Glance: Shopping Reimagined with AI','Naveen Tewari (Founder & CEO, InMobi) · Mod: Ryan Joe (EIC, Adweek)',''],
+['Wed','4:20 PM','Brand Innovators','New Frontiers of Commerce Media','Nili Klenoff (EVP Commerce Media, Mastercard)',''],
+['Wed','4:30 PM','Sport Beach','Made in America — How LA28 Is Rewriting the Rules of Sports Marketing','Carla Hassan (CMO, JPMorganChase) · Shaun White (3x Olympic Gold Medalist & LA28 Partner)',''],
+['Wed','4:40 PM','Adweek House','Full Court Perspective with NBA\'s Chris Paul','Chris Paul (Athlete, Entrepreneur & Philanthropist) · Mod: Will Lee (CEO, Adweek)',''],
+['Wed','5:00 PM','Female Quotient','WNBA Unstoppable: A Cannes Conversation and Cocktails','Scott Mager (US CMO, Deloitte) · Mod: Colie Edison (SVP & Chief Growth Officer, WNBA)',''],
+['Wed','5:00 PM','Sport Beach','SPORT BEACH Open Play: Golf','Putting challenge & interactive simulator',''],
+['Wed','5:10 PM','Adweek House','Playing to Win: A Conversation with Robert Griffin III and 72andSunny','Robert Griffin III (Heisman Winner & CEO, RG3 Sports) · Damaune Journey (Global CGO, 72andSunny)',''],
+['Wed','5:30 PM','Female Quotient','Ladies Night Out: Community Beyond the Clock','Jennifer Wilson (CMO, Lowe\'s) · Mod: Shelley Zalis (CEO, FQ)',''],
+['Wed','6:00 PM','Female Quotient','Lowe\'s × FQ Beach Party Celebration','Golden-hour networking and business discussion',''],
+['Wed','6:00 PM','Adweek House','Creative 100 Reception','Evening reception honoring seasonal honorees',''],
+['Wed','6:00 PM','Adweek House','"Spent" The Wind Down: Intimate Dinner (Fluent — EMÔRA Restaurant, 89 Rue d\'Antibes)','Private client dinner','i'],
+// ── THURSDAY JUNE 25 ──
+['Thu','7:00 AM','Sport Beach','Strava Run Club','Hosted by Sweatwork · Angela Manuel Davis (Motivational Coach)',''],
+['Thu','7:00 AM','Sport Beach','Swim & Strength Club','Hosted by Sweatwork · Vesi Angelova · Ron "Boss" Everline',''],
+['Thu','9:00 AM','Brand Innovators','Breakfast & Registration','',''],
+['Thu','9:15 AM','Brand Innovators','Opening Remarks','Brandon Gutman · Marc Sternberg (Co-Founders & Co-CEOs) · Gisela Germano (CCO) · Pearl Tam (SVP Content)',''],
+['Thu','9:25 AM','Brand Innovators','Building Enduring Brands in an AI-Driven Economy','Emily O\'Hara (eBay) · Carol Phillips Hutchinson (Microsoft) · Betty Tian (Marriott International) · Carmen Vasile (PepsiCo) · Mod: Arthur Leopold',''],
+['Thu','9:30 AM','Female Quotient','The Human Advantage: Creativity in the Age of AI','Ekta Chopra (e.l.f. Beauty) · Lindsay Franke (Ipsos NA) · Prachi Gore (Asana) · Mod: Debra Aho Williamson (Sonata Insights)',''],
+['Thu','9:30 AM','Adweek House','Conversion to Customer Value: Retail Media Measurement','Harvey Ma (Sam\'s Club) · Marc Pritchard (Chief Brand Officer, P&G) · Mod: Ryan Joe (EIC, Adweek)',''],
+['Thu','10:00 AM','Sport Beach','Beyond Live Sports: Creator TV and The New Attention Era (Spotter)','',''],
+['Thu','10:00 AM','Female Quotient','Start With Who Matters: The Future of Marketing Systems','Eric Austin (P&G) · Helen Driskell (P&G) · Marc Villegas (P&G) · Mod: Alice McKown (The Atlantic)',''],
+['Thu','10:00 AM','Brand Innovators','Fireside Chat: Unilever','Leandro Barreto (Global CMO, Unilever Beauty & Wellbeing) · Mod: Harry Kargman (Kargo)',''],
+['Thu','10:00 AM','Adweek House','Outcomes, Everywhere, All At Once: Engineering Growth (Teads)','Michele Barlow (BofA) · Sara Brooks (BetterHelp) · Dani Cushion (Teads) · Attica Alexis Jaques (Ancestry) · Dave Kersey (SharkNinja) · Alison Payne (Heineken) · Mod: Mark Stenberg (Adweek)',''],
+['Thu','10:25 AM','Brand Innovators','Creating Experiences People Want to Share—and Communities They Join','Ashley Kechter (Vuori) · Judy Lee (Pinterest) · Whitney Magnuson (Zoom) · Lucy Werner (Marriott) · Jill Cress (Babylist) · Mod: Keith Bendes',''],
+['Thu','10:30 AM','Female Quotient','Culture on Cue: How Brands Show Up in Culture','Dr. Marcus Collins (University of Michigan) · Chris Lieber (Real Chemistry) · Tati Lindenberg (Unilever) · Manu Orssaud (Duolingo)',''],
+['Thu','10:50 AM','Adweek House','Redefining the Role of Brands in Entertainment (EightPM)','Patrick O\'Keefe (e.l.f. Beauty) · Grant Regillo (EightPM) · Samantha Catalina (Fractional CMO) · Mod: Alison Weissbrot (Adweek)',''],
+['Thu','11:00 AM','Sport Beach','Wicked Good: How Boston Became the Blueprint for a Sports City','Michele Barlow (Bank of America) · Ryan Fischer (FSM) · Jack Fleming (Boston Athletic Association) · David Ortiz (Red Sox Legend)',''],
+['Thu','11:00 AM','Female Quotient','The Space Between the Idea and the Outcome','Bozoma Saint John (Former CMO) · Mod: Abigail Staples (Amazon Devices)',''],
+['Thu','11:05 AM','Brand Innovators','Building Iconic Brands at Scale with Mars','Natalia Ball (Mars Pet Nutrition) · Rankin Carroll (Mars Snacking) · Matt Graham (Mars Global Food & Nutrition) · Mod: Carmen Gonzalez-Meister',''],
+['Thu','11:15 AM','Adweek House','Adweek House Specialized Morning Programming Block','Brand safety and executive workflow insights',''],
+['Thu','11:30 AM','Female Quotient','Imagining What\'s Next: AI, Creativity, and the Future of Co-Creation','Stephanie Horton (Senior Director, Google)',''],
+['Thu','11:35 AM','Brand Innovators','The Power of AI-Driven Media Strategies','Lisa Giacosa (Spark Foundry) · Stan Turek (InMarket) · Mod: Meredith Herman (Kenvue)',''],
+['Thu','11:45 AM','Adweek House','Partnership Is The New Power Move (Weber Shandwick)','Carolina Cespedes Virguez (GoGo squeeZ) · Laura Ness Owens (Bobcat) · Sarah Reinecke (Mars) · Niek de Rooij (Knorr) · Mod: Rebecca Stewart (Adweek)',''],
+['Thu','12:00 PM','Sport Beach','Wearables, Meet Shareables: The Intersection of Tech and Community','Jen Rapp (Chief Customer Officer, Superside) · Doug Sweeny (CMO, ŌURA) · Louisa Wee (CMO, Strava) · Hunter Woodhall (2024 Paralympic Gold Medalist)',''],
+['Thu','12:00 PM','Female Quotient','On Her Terms: Women Athletes Redefining Influence','Hilary Knight (5x Olympian & World Champion)',''],
+['Thu','12:10 PM','Brand Innovators','Fireside Chat: L\'Oréal','Fabien Petit (Transformation Officer CDMO, L\'Oréal) · Mod: Camille Erard (Ekimetrics)',''],
+['Thu','12:30 PM','Female Quotient','Relevance Over Reach: Winning Attention Today','Meena Anvary (Banana Republic) · Laura Cosgrove (Rokt) · Corey Rados (Uber Advertising)',''],
+['Thu','12:35 PM','Adweek House','The Death of the Campaign (and What Comes Next) (Empathy Lab)','Roland Butler (Empathy Lab) · Ben Hall (Empathy Lab) · Mod: Kendra Barnett (Sr. Tech Reporter, Adweek)',''],
+['Thu','12:35 PM','Brand Innovators','Creativity That Performs: Bold Ideas to Impact','Tim Barnes (AWS) · Chris Bellinger (PepsiCo Foods US) · Brandon Rochon (Notorious111) · Matt Krepsik (MediaRadar) · Mod: Jess Kirkman (Mattel)',''],
+['Thu','1:00 PM','Adweek House','Decoding the Agentic Advantage in Performance Marketing (Taboola)','Advanced strategic session on automation and network efficiency',''],
+['Thu','1:00 PM','Female Quotient','Beyond the Algorithm: The New Rules of Trust','Sophia Bantanidis (Citibank) · Joy Ogunneye (Kenvue) · Mod: Lindsay Franke (Ipsos)',''],
+['Thu','1:10 PM','Brand Innovators','Panel Exploration','Gabie Boko (NetApp) · Jim Lesser (ServiceNow) · Selina Sykes (Unilever Beauty) · Mod: Corey O\'Brien (Oliver)',''],
+['Thu','1:30 PM','Female Quotient','Carrying the Role: Leadership Under Expectations','Robert Dippell (Morning Brew) · Geoff Schiller (Screenvision Media)',''],
+['Thu','1:35 PM','Brand Innovators','Fireside Chat: e.l.f. Beauty','Justine Armour (72andSunny International) · Laurie Lam (Chief Brand Officer, e.l.f. Beauty)',''],
+['Thu','1:50 PM','Adweek House','Powered by Story, Accelerated by Tech: Branded Entertainment (Paramount)','Leo O\'Connor (Paramount Advertising) · Dan Reich (Paramount+ & Pluto TV) · Marika Roque (Media Strategy) · Mod: Mark Stenberg (Adweek)',''],
+['Thu','2:00 PM','Sport Beach','Earn Your Place or Buy Your Space: Authentic in Sport','Jeff Cha (Visa) · Hilary Knight (Olympic Gold Medalist) · Erin Silvoy (Starbucks) · Karina Wilsher (Anomaly)',''],
+['Thu','2:00 PM','Brand Innovators','The Commerce Media Revolution','Sarah Larsen (Hisense) · Eric Sheinkop (The Desire Company) · Doug Sweeny (ŌURA) · Jasmine Taylor (Instacart) · Mod: Caroline Kennedy (Material)',''],
+['Thu','2:00 PM','Female Quotient','Collective Impact: Power of Brand Partnership','Natalie Wills (Expedia Group) · Mod: Vida Cornelious (The New York Times)',''],
+['Thu','2:15 PM','Adweek House','Inside the Agency Glow-Up (Pendulum)','Michelle Hutton (Pendulum) · Mark Listes (Co-Founder & CEO, Pendulum)',''],
+['Thu','2:30 PM','Sport Beach','Social Media Rewrote the Athlete Playbook','Carmelo Anthony (NBA Hall of Famer & Analyst) · Cooper Flagg (NBA Player) · Mod: Elle Duncan (Netflix)',''],
+['Thu','2:30 PM','Brand Innovators','The Post-Cannes Playbook: Leadership & Strategy','Ruth Cartwright (Active International UK) · Kimberly Hairston-Hicks (Sanofi) · Marcela Melero (Dove) · Elizabeth Preis (Victoria\'s Secret) · Mod: Casey Hurbis',''],
+['Thu','2:30 PM','Female Quotient','Power Pair: Building Legacy Together','Ciara (Cultural Icon & Entrepreneur) · Russell Wilson (Super Bowl Champion QB) · Mod: Shelley Zalis (FQ)',''],
+['Thu','2:40 PM','Adweek House','The New Deal: Building Agencies Worth Buying (Pendulum)','Andreas Roell (CEO, Pendulum) · Mod: Will Lee (CEO, Adweek)',''],
+['Thu','3:00 PM','Sport Beach','SPORT BEACH Grand VIP Wrap Party (Invite Only)','Final closeout reception and performance celebration','i'],
+['Thu','3:00 PM','Female Quotient','FQ CMO: The Power of Brand Trust','Melissa Brotz (Abbott) · Jill Kramer (Mastercard) · Lina Polimeni (Eli Lilly) · William White (Walmart US) · Mod: Vanessa Buenger (FQ)',''],
+['Thu','3:05 PM','Adweek House','Retail Media Escapes the Shelf (Roundel)','Jenny Holleran (VP Partner Solutions, Roundel) · Mod: Ryan Joe (EIC, Adweek)',''],
+['Thu','3:30 PM','Female Quotient','Marketing Brew Weekly Special Recording','Jennimai Nguyen · Kelsey Sutton (Marketing Brew)',''],
+['Thu','3:55 PM','Adweek House','Beyond Efficiency: What Actually Drives Creative Excellence','John McKelvey (Miramar) · Jonathan Mildenhall (CMO)',''],
+['Thu','4:00 PM','Female Quotient','Momentum Makers: Driving Growth Forward','Melissa Poulos (Google) · Mod: Kerry Flynn (Axios)',''],
+['Thu','4:30 PM','Adweek House','Life After HoldCos','Jeff Benjamin (Creative Lead) · Laura Petruccelli (Goodby Silverstein) · Anselmo Ramos (GUT) · Kern Schireson (Known) · Mod: Alison Weissbrot (Adweek)',''],
+['Thu','5:00 PM','Female Quotient','Creative Chemistry: Creators & Brands Align','Stacy Martinet (Adobe) · Lilliana Vázquez (Host) · Mod: Jasmine Enberg (Scalable)',''],
+['Thu','5:00 PM','Adweek House','Marketing to Humans and Machines: Discovery in AI Era (Adobe Sunset Series)','Andy Kauffman (Adobe) · Selina Sykes (Unilever) · Rachel Thornton (Adobe) · Mod: Liz Kneebone (Adweek)',''],
+['Thu','5:30 PM','Female Quotient','Health at Speed of Insight: Trust Through Creativity','Michele Terra (21GRAMS) · Heiko Peterson (Bayer) · Mod: Emily Seal (The Clios)',''],
+];
+
+// ── TRANSFORM RAW DATA ────────────────────────────────────────────────────────
+const EVENTS = RAW.map((r,i)=>{
+  const [day,time,venue,title,speakers,flags]=r;
+  const sort=parseTime(time);
+  const per=period(sort);
+  const dayLabel=day==='Mon'?'Monday, Jun 22':day==='Tue'?'Tuesday, Jun 23':day==='Wed'?'Wednesday, Jun 24':'Thursday, Jun 25';
+  return {id:i,day,dayLabel,time,sort,per,venue,title,speakers,flags};
+});
+
+// ── POPULATE VENUE SELECT ─────────────────────────────────────────────────────
+(function(){
+  const venues=[...new Set(EVENTS.map(e=>e.venue))].sort();
+  const sel=document.getElementById('venueFilter');
+  venues.forEach(v=>{
+    const opt=document.createElement('option');
+    opt.value=v; opt.textContent=v;
+    sel.appendChild(opt);
+  });
+})();
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let state={day:'All',period:'All',venue:'All',search:'',realtorOnly:false};
+
+// ── FILTER ────────────────────────────────────────────────────────────────────
+function filtered(){
+  return EVENTS.filter(e=>{
+    if(state.day!=='All'&&e.day!==state.day) return false;
+    if(state.period!=='All'&&e.per!==state.period) return false;
+    if(state.venue!=='All'&&e.venue!==state.venue) return false;
+    if(state.realtorOnly&&!e.flags.includes('r')) return false;
+    if(state.search){
+      const q=state.search.toLowerCase();
+      if(!e.title.toLowerCase().includes(q)&&!e.speakers.toLowerCase().includes(q)&&!e.venue.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function render(){
+  const results=filtered();
+  document.getElementById('resultCount').textContent=results.length;
+  const list=document.getElementById('eventList');
+
+  if(results.length===0){
+    list.innerHTML=`<div class="empty-state"><div class="icon">🔍</div><h3>No sessions found</h3><p>Try adjusting your filters or search terms.</p></div>`;
+    return;
+  }
+
+  // Group by day → period
+  const groups={};
+  const dayOrder=['Mon','Tue','Wed','Thu'];
+  const perOrder=['Morning','Afternoon','Evening'];
+  results.forEach(e=>{
+    const k=e.day+':'+e.per;
+    if(!groups[k]) groups[k]={day:e.day,dayLabel:e.dayLabel,per:e.per,events:[]};
+    groups[k].events.push(e);
+  });
+  // Sort groups
+  const sortedGroups=Object.values(groups).sort((a,b)=>{
+    const di=dayOrder.indexOf(a.day)-dayOrder.indexOf(b.day);
+    if(di!==0) return di;
+    return perOrder.indexOf(a.per)-perOrder.indexOf(b.per);
+  });
+  // Sort events within each group
+  sortedGroups.forEach(g=>g.events.sort((a,b)=>a.sort-b.sort));
+
+  let html='';
+  let lastDay='';
+  sortedGroups.forEach(g=>{
+    if(g.day!==lastDay){
+      const dayEmoji=g.day==='Mon'?'🌟':g.day==='Tue'?'🎯':g.day==='Wed'?'🏆':'🎬';
+      html+=`<div class="day-divider">${dayEmoji} ${g.dayLabel} <span>${g.events.length} sessions shown this day</span></div>`;
+      lastDay=g.day;
+    }
+    const perEmoji=g.per==='Morning'?'🌅':g.per==='Afternoon'?'☀️':'🌆';
+    html+=`<div class="period-head">${perEmoji} ${g.per}</div>`;
+    g.events.forEach(e=>{
+      const vc=vcol(e.venue);
+      const isR=e.flags.includes('r');
+      const isI=e.flags.includes('i');
+      const isQ=e.flags.includes('q');
+      const badges=(isR?`<span class="flag flag-rltr">🏠 REALTOR.COM</span>`:'')+
+                   (isI?`<span class="flag flag-invite">INVITE ONLY</span>`:'')+
+                   (isQ?`<span class="flag flag-requested">INVITE REQUESTED</span>`:'');
+      html+=`<div class="evt${isR?' is-realtor':''}">
+        <div class="evt-meta">
+          <span class="evt-time">${e.time}</span>
+          <span class="venue-tag" style="background:${vc}">${e.venue}</span>
+        </div>
+        <div class="evt-title">${e.title}</div>
+        ${e.speakers?`<div class="evt-speakers">${e.speakers}</div>`:''}
+        ${badges?`<div class="evt-flags">${badges}</div>`:''}
+      </div>`;
+    });
+  });
+
+  list.innerHTML=html;
+}
+
+// ── SET DAY (syncs all day UI) ────────────────────────────────────────────────
+function setDay(day){
+  state.day=day;
+  // sync all [data-day] buttons (desktop tabs + bottom nav)
+  document.querySelectorAll('[data-day]').forEach(b=>{
+    b.classList.toggle('active', b.dataset.day===day);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  render();
+}
+
+// ── EVENT LISTENERS ───────────────────────────────────────────────────────────
+
+// All day-switching buttons (desktop + bottom nav) via delegation
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-day]');
+  if(btn) setDay(btn.dataset.day);
+});
+
+document.querySelectorAll('.filt-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filt-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.period=btn.dataset.period;
+    render();
+  });
+});
+
+document.getElementById('venueFilter').addEventListener('change',e=>{
+  state.venue=e.target.value;
+  render();
+});
+
+let st;
+document.getElementById('search').addEventListener('input',e=>{
+  clearTimeout(st);
+  st=setTimeout(()=>{ state.search=e.target.value.trim(); render(); },200);
+});
+
+document.getElementById('rltrBtn').addEventListener('click',()=>{
+  state.realtorOnly=!state.realtorOnly;
+  document.getElementById('rltrBtn').classList.toggle('active',state.realtorOnly);
+  render();
+});
+
+// Collapsible always-open spaces
+document.getElementById('aoToggle').addEventListener('click',()=>{
+  const toggle=document.getElementById('aoToggle');
+  const body=document.getElementById('aoBody');
+  const open=body.classList.toggle('open');
+  toggle.classList.toggle('open',open);
+  toggle.setAttribute('aria-expanded',open);
+});
+
+render();
+</script>
+</body>
+</html>
