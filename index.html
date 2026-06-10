@@ -293,9 +293,9 @@ body{
   <div class="hero-title">Cannes Lions 2026<br>Executive Schedule</div>
   <div class="hero-sub">Curated for April Buschur · realtor.com</div>
   <div class="hero-stats">
-    <span class="hero-stat">285 Sessions</span>
+    <span class="hero-stat">307 Sessions</span>
     <span class="hero-stat">4 Days</span>
-    <span class="hero-stat">11 Venues</span>
+    <span class="hero-stat">12 Venues</span>
     <span class="hero-stat rltr">🏠 2 Realtor.com Sessions</span>
   </div>
 </div>
@@ -342,7 +342,7 @@ body{
 </div>
 
 <div class="results-bar">
-  <span id="resultCount" class="results-count">285</span>&nbsp;<span>sessions shown</span>
+  <span id="resultCount" class="results-count">307</span>&nbsp;<span>sessions shown</span>
 </div>
 
 <div id="eventList"></div>
@@ -374,6 +374,7 @@ const VCOL = {
   'Roundel House':     '#BB0000',
   'Equativ Yacht':     '#0E8A8A',
   'Adweek Off-site':   '#C45E10',
+  'AI & Tech Sandbox': '#7C3AED',
 };
 function vcol(v){ return VCOL[v]||'#555' }
 
@@ -471,6 +472,14 @@ const RAW=[
 ['Mon','5:00 PM','Adweek House','The New Balance: Creative Experimentation Meets Brand Consistency (Adobe Sunset Series)','Hannah Elsakr (VP, Adobe) · Kyle Laughlin (SVP, Adobe) · Stephan Pretorius (CTO, WPP)',''],
 ['Mon','5:30 PM','Adweek Off-site','ADWEEK DEALROOM LAUNCH: Sunset Sail (Solana Catamaran, Yacht Row)','Interactive reception aboard the Solana Catamaran',''],
 ['Mon','5:30 PM','Female Quotient','From Moments to Movements: Experiential Connections','Thought leadership panel into open networking cocktails',''],
+// ── MONDAY — AI & TECH SANDBOX (Miramar Beach) ──
+['Mon','11:00 AM','AI & Tech Sandbox','Panel: How AI Comes to Life for Leading Brands','Brieane Olson (CEO, Pacsun) · Whitney Magnuson (Head of Brand & Media, Zoom) · Valentina Culatti (Global Director Creative Strategy, Snapchat) · Megan Malli (CEO, AnswerLab) · Gina Igwe (VP of Brand Creative & Consumer Marketing, DoorDash) · Mod: Parks Blackwell (VP Client Development & Marketing, PMG)',''],
+['Mon','12:00 PM','AI & Tech Sandbox','Panel: The Creator Divide','Tom Scott (Creator) · Xyla Foxlin (Creator) · Aimee Smale (Founder, Odd Muse) · Mod: Jennifer Quigley-Jones (VP Strategy & Partnerships, PMG)',''],
+['Mon','1:00 PM','AI & Tech Sandbox','Keynote: How Advertisers Can Help Information Integrity in a Fast-Paced World of AI','Charlotte Scaddan (Senior Advisor on Information Integrity, United Nations) · Harriet Kingaby (Co-Chair & Co-Founder, Conscious Advertising Network)',''],
+['Mon','2:00 PM','AI & Tech Sandbox','Panel: When AI Becomes the Interface: Winning Brand Discovery in a New Era','Oliver Parker (VP of Global Generative AI GTM, Google Cloud) · Phillipa Leighton-Jones (SVP Global Head of Studio & Creative, Dow Jones/WSJ) · Mod: Parks Blackwell (PMG)',''],
+['Mon','3:00 PM','AI & Tech Sandbox','Keynote: AI Eats the World','Benedict Evans (Independent Analyst)',''],
+['Mon','4:15 PM','AI & Tech Sandbox','Snapchat Meet Up: Beyond the Feed — David Dobrik, Snapchat, and the Social Media Reset','Erin Joyce (Head of Creative Strategy NA, Snap Inc.) · Mandy Gardiner (Senior Director Brand Partnerships, Snap Inc.) · David Dobrik (Creator Entrepreneur)',''],
+['Mon','5:15 PM','AI & Tech Sandbox','Alli Meet Up: From Data Rich to Decision Ready: A Live Look at Alli','Chris Alvares (VP AI & Technology, PMG) · Crissi Cupak (Head of Product, PMG) · Dillion Larberg (Consulting & Strategy Director, PMG)',''],
 // ── TUESDAY JUNE 23 ──
 ['Tue','7:00 AM','Sport Beach','Strava Run Club','Hosted by Sweatwork · Angela Manuel Davis (Motivational Coach)',''],
 ['Tue','7:00 AM','Sport Beach','Sweatwork Swim & Strength Club','Vesi Angelova (Global Triathlete) · Ron "Boss" Everline (Celebrity Trainer)',''],
@@ -548,6 +557,12 @@ const RAW=[
 ['Tue','5:00 PM','Adweek House','Making a Moment: When Creativity Becomes Culture (Adobe Sunset Series)','Tim Ellis (CMO, NFL) · Kelly Mahoney (CMO, Ulta Beauty) · Stacy Martinet (Adobe) · Anne Marie Nelson-Bogle (YouTube Ads) · Mod: Jenny Rooney (Adweek)',''],
 ['Tue','7:00 PM','Sport Beach','72andSunny Dinner (Invite Only)','Private executive dining','i'],
 ['Tue','Evening','Roundel House','Tuesday Cocktails','General brand hospitality','q'],
+// ── TUESDAY — AI & TECH SANDBOX (Miramar Beach) ──
+['Tue','10:00 AM','AI & Tech Sandbox','Keynote: Future of Marketing & Business Transformation in the Era of AI','Jay Pattisall (VP & Principal Analyst, Forrester)',''],
+['Tue','11:00 AM','AI & Tech Sandbox','Fireside Chat: Sparking Creativity: How AI is Redefining the Rules of Imagination','Simon Morris (VP of International Marketing, Adobe) · Brandom Baum (Creator) · Mod: Jennifer Quigley-Jones (VP Strategy & Partnerships, PMG)',''],
+['Tue','1:00 PM','AI & Tech Sandbox','Fireside Chat: Brief Less. Build More. Vibe Code Now.','Jennifer Kattula (CMO, Microsoft Advertising) · David "Shingy" Shing (Digital Prophet)',''],
+['Tue','3:15 PM','AI & Tech Sandbox','Convey Meet Up: A Conversation with Andreessen Horowitz','Akosua Asamoah (Partner, Andreessen Horowitz) · Co-Founder & CEO, Convey',''],
+['Tue','4:15 PM','AI & Tech Sandbox','Robot.com Meet Up: Is Brand Storytelling the Last Real Moat?','Judah Longgrear (Co-Founder, Robot.com)',''],
 // ── WEDNESDAY JUNE 24 ──
 ['Wed','7:00 AM','Sport Beach','Sweatwork Morning Workouts','Vesi Angelova (Global Triathlete) · Ron "Boss" Everline (Celebrity Trainer) · Angela Manuel Davis',''],
 ['Wed','8:15 AM','Adweek House','Building Better Web Experiences (Invite-Only Breakfast)','Kendra Barnett (Adweek) with Chrome & global tech executives','i'],
@@ -630,6 +645,15 @@ const RAW=[
 ['Wed','6:00 PM','Female Quotient','Lowe\'s × FQ Beach Party Celebration','Golden-hour networking and business discussion',''],
 ['Wed','6:00 PM','Adweek House','Creative 100 Reception','Evening reception honoring seasonal honorees',''],
 ['Wed','6:00 PM','Adweek House','"Spent" The Wind Down: Intimate Dinner (Fluent — EMÔRA Restaurant, 89 Rue d\'Antibes)','Private client dinner','i'],
+// ── WEDNESDAY — AI & TECH SANDBOX (Miramar Beach) ──
+['Wed','10:00 AM','AI & Tech Sandbox','Fireside Chat: The State of Community: Trust, Identity, & Influence in the AI Era','Steve Huffman (Co-Founder, Reddit) · Nicholas Ward (Co-Founder & President, Koddi)',''],
+['Wed','11:00 AM','AI & Tech Sandbox','Panel: AI Fact vs. Fiction: A Marketer\'s Guide to What\'s Real, What\'s Hype, & What Actually Drives Value','Laura Held (Partner, Shamrock Capital) · Lucy Dobrin (Managing Director, Providence Equity Partners) · Mod: Parks Blackwell (PMG)',''],
+['Wed','12:00 PM','AI & Tech Sandbox','Fireside Chat: Lights, Camera, Algorithm: AI\'s New Role in Hollywood','Buzz Hays (Global Market Lead TMEG Industries, Google) · Josh Krichefski (EMEA President, PMG)',''],
+['Wed','1:00 PM','AI & Tech Sandbox','Panel: Brand Building for Humans & AI','Jonah Goodhart (CEO, Mobian) · Mark Howard (COO, Time) · Catherine Berger (VP Marketing Transformation, Grupo Bimbo / Bimbo Bakeries USA)',''],
+['Wed','2:00 PM','AI & Tech Sandbox','Keynote: Intelligence in Pixels: Executing Creative at the Speed and Scale of AI','Amit Jain (CEO, Luma)',''],
+['Wed','3:15 PM','AI & Tech Sandbox','Luma Meet Up: The Creative Renaissance: How AI is Enabling Independent Creative Agencies','Jason Day (VP EMEA, Luma)',''],
+['Wed','4:15 PM','AI & Tech Sandbox','PMG Meet Up: Creator Spark','Jennifer Quigley-Jones (VP Strategy & Partnerships, PMG)',''],
+['Wed','5:15 PM','AI & Tech Sandbox','Pinterest & PMG Meet Up: The Creative R&D Loop — A New Model for Co-Creating Marketing Innovation','Carly Carson (Head of Integrated Media, PMG) · Crissi Cupak (Head of Product, PMG) · Chip Jessopp (VP GM Programmatic Ads Sales, Pinterest) · Jamie Kerns (VP Engineering, Pinterest)',''],
 // ── THURSDAY JUNE 25 ──
 ['Thu','7:00 AM','Sport Beach','Strava Run Club','Hosted by Sweatwork · Angela Manuel Davis (Motivational Coach)',''],
 ['Thu','7:00 AM','Sport Beach','Swim & Strength Club','Hosted by Sweatwork · Vesi Angelova · Ron "Boss" Everline',''],
@@ -682,6 +706,9 @@ const RAW=[
 ['Thu','5:00 PM','Female Quotient','Creative Chemistry: Creators & Brands Align','Stacy Martinet (Adobe) · Lilliana Vázquez (Host) · Mod: Jasmine Enberg (Scalable)',''],
 ['Thu','5:00 PM','Adweek House','Marketing to Humans and Machines: Discovery in AI Era (Adobe Sunset Series)','Andy Kauffman (Adobe) · Selina Sykes (Unilever) · Rachel Thornton (Adobe) · Mod: Liz Kneebone (Adweek)',''],
 ['Thu','5:30 PM','Female Quotient','Health at Speed of Insight: Trust Through Creativity','Michele Terra (21GRAMS) · Heiko Peterson (Bayer) · Mod: Emily Seal (The Clios)',''],
+// ── THURSDAY — AI & TECH SANDBOX (Miramar Beach) ──
+['Thu','12:00 PM','AI & Tech Sandbox','Panel: Future of Creator Marketing','Jennifer Quigley-Jones (Moderator, VP Strategy & Partnerships, PMG) · Zachary Dereniowski (Creator) · Lauri Metrose (Chief Communications Officer, Expedia) · Leah Walker (Director of Influencer & Creator Marketing, Adobe)',''],
+['Thu','1:00 PM','AI & Tech Sandbox','Panel: How to Survive in a Post-LiveRamp World','Tom Triscari (Founder, Lemonade) · Mathieu Roche (CEO & Co-Founder, ID5) · Sam Bloom (Head of Partnerships, PMG)',''],
 ];
 
 // ── TRANSFORM RAW DATA ────────────────────────────────────────────────────────
